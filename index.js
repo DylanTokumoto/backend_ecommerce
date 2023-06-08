@@ -1,6 +1,7 @@
 // forma compatível com o node para fazer a importação do express (import express from "express")
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const ItemSchema = require("./schemas/ItemSchema");
 
@@ -8,6 +9,9 @@ const PORT = process.env.PORT || 3333;
 
 //iniciando o express dentro da const app
 const app = express();
+
+app.use(cors());
+app.use(express.json());
 
 mongoose.connect("mongodb+srv://admin:admin@cluster0.n8rjbr8.mongodb.net/my_db?retryWrites=true&w=majority");
 
@@ -95,5 +99,7 @@ app.put("/items/:id", async (request, response)=>{
 
 
 
-app.listen(PORT, ()=>console.log("servidor iniciado com sucesso em http://localhost:" + PORT));
+app.listen(PORT, () =>
+    console.log("servidor iniciado com sucesso em http://localhost:" + PORT)
+);
 
