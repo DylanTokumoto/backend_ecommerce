@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const ItemSchema = require("./schemas/ItemSchema");
-
 const PORT = process.env.PORT || 3333;
 
 //iniciando o express dentro da const app
@@ -17,8 +16,7 @@ mongoose.connect("mongodb+srv://admin:admin@cluster0.n8rjbr8.mongodb.net/my_db?r
 
 app.use(express.json);
 
-
-
+//get base url
 app.get("/", (request, response)=>{
     return response.json({message: "Ola usuário"});
 });
